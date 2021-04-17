@@ -1,0 +1,15 @@
+#navbar {
+    width: 100vw;
+    height: 15vh;
+    background-color: var(--background-color);
+    margin-bottom: 45px;
+}
+
+#navbar a {
+    font-size: 24px;
+    font-weight:bold;
+}
+
+.navbar {
+    border-radius: 50px;
+}

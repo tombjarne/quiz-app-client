@@ -1,0 +1,37 @@
+.quiz-header {
+    margin-bottom: 45px;
+}
+
+.quiz-header * {
+    margin: 10px;
+}
+
+.quiz-header h2 {
+    border-bottom: 5px solid var(--background-color);
+}
+
+.card {
+    width: 50vw;
+    box-shadow: 0px 0px 25px var(--shadow-color);
+}
+
+.answer-option {
+    font-size: 28px !important;
+    margin: 5px;
+}
+
+.card {
+    width: 60vw;
+}
+
+.toast {
+    margin: 3px !important;
+}
+
+.toast-body button {
+    width: 100%;
+    height: 100%;
+    padding: 10px 0px !important;
+    margin: 0px;
+    background-color: var(--background-color);
+}

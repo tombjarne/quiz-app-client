@@ -1,0 +1,173 @@
+:root {
+    --font-color: #000;
+
+    --background-color: #3B6FF7;
+    --background-color-alt: #f8f8ff;
+
+    --shadow-color: #D7D7DE;
+
+    --sunset1: #010006;
+    --sunset2: #01308a;
+    --sunset3: #3a4e9e;
+    --sunset4: #390f37;
+    --sunset5: #815288;
+    --sunset6: #bd9fd1;
+    --sunset7: #ff5558;
+    --sunset8: #fe4c01;
+    --sunset9: #ffb381;
+    --sunset10: #fe4e;
+}
+
+.black {
+    background-color: var(--background-color) !important;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    font-family: Montserrat;
+    background-color: var(--background-color-alt);
+    height: 100vh;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+
+}
+
+h3 {
+
+}
+
+h4 {
+
+}
+
+h5 {
+    font-size: 14px;
+}
+
+h6 {
+
+}
+
+.big-text {
+    font-size: 24px;
+    font-family: 'Montserrat ExtraBold';
+    margin: 0px;
+    padding: 0px;
+}
+
+.extra-big-text {
+    font-size: 72px;
+    font-weight: bold;
+}
+
+/* HEADLINES AND FONT */
+
+#dashboard h1,
+#dashboard h2,
+#dashboard h3,
+#dashboard h4 {
+    color: var(--font-color);
+    font-family: "Montserrat ExtraBold";
+}
+
+/* FLEX LAYOUT */
+
+.flex {
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.row {
+    flex-direction: row;
+}
+
+.row-reverse {
+    flex-direction: row-reverse;
+}
+
+.centered {
+    align-items: center;
+}
+
+.all-centered {
+    align-items: center;
+    justify-content: center;
+}
+
+.bottom {
+    align-items: flex-end;
+}
+
+.sp-btw {
+    justify-content: space-between;
+}
+
+.sp-evn {
+    justify-content: space-evenly;
+}
+
+.sp-around {
+    justify-content: space-around;
+}
+
+.baseline {
+    align-items: baseline;
+}
+
+.flex-end {
+    justify-content: flex-end;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+/* BUTTONS */
+
+.text-btn {
+    border-radius: 15px;
+    padding: 15px;
+    background-color: var(--background-color-alt);
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* ICONS */
+
+.dashboard-item svg,
+.content-item svg {
+    font-size: 20px;
+    padding: 14px;
+    border-radius: 999px;
+    width: 20px !important;
+}
+
+.content-button-wrapper svg,
+#options-bar svg {
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.content-button-wrapper svg:hover,
+#options-bar svg:hover {
+    transform: scale(1.1);
+    transition: 0.2s ease-in-out;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 768px) {
+    .card {
+        width: 90vw;
+    }
+}
