@@ -3,8 +3,8 @@ import { withRouter } from "react-router-dom";
 
 import {
   Card, CardBody,
-  CardTitle, CardSubtitle, Toast, ToastBody, ToastHeader,
-  Button
+  CardTitle, CardSubtitle, Toast, ToastBody,
+  ToastHeader, Button
 } from 'reactstrap';
 
 import "../../assets/css/quiz.css";
@@ -23,7 +23,7 @@ const Questions = ( { question, callback } ) => {
            { question.answers.map( answer =>
             <Toast key={ answer.id }>
               <ToastHeader icon="secondary">
-                Option { question.answers.indexOf( answer ) +1 }
+                Option { question.answers.indexOf( answer ) + 1 }
               </ToastHeader>
               <ToastBody>
                 <Button className="answer-option"

@@ -2,23 +2,34 @@ import React, { useState } from "react";
 import { withRouter } from 'react-router-dom';
 
 import Question from "./questions";
-import { QUIZ } from "../constants";
+import QuestionResult from "./questions/result";
+
+import { useStores } from "../stores/useStores";
 
 const Quiz = () => {
 
-  const [quiz, setQuiz] = useState( QUIZ );
-  const [pointer, setPointer] = useState( 0 );
-  const [currentQuestion, setCurrentQuestion] = useState( QUIZ.questions[0] );
+  const { quizStore } = useStores();
+
+  const [quiz, setQuiz] = useState( quizStore.quiz );
+  const [answerValue, setAnswerValue] = useState( false );
+  const [currentQuestion, setCurrentQuestion] = useState( quizStore.currentQuestion );
   const [questionIsActive, setQuestionActivity] = useState( true );
 
-  const proceedQuiz = ( answerId ) => {
+  const proceedQuiz = ( answerIds, solution ) => {
 
-    // connect to store and proceed with api calls
-    let next = pointer + 1;
+    let result;
+
+    if ( currentQuestion.type === 1 ) {
+      result = quizStore.submitAnswers( quiz.id, quizStore.currentQuestion.id, answerIds, solution );
+    } else {
+      result = quizStore.submitAnswer( quiz.id, quizStore.currentQuestion.id, answerIds[0], solution );
+    }
+
+    setAnswerValue( result );
+
+    // handle quiz response -> true or false
 
     try {
-      setPointer( next );
-      setCurrentQuestion( quiz.questions[next] )
       setQuestionActivity( false );
     } catch ( exception ) {
       // handle index out of bounds error when quiz is finished
@@ -39,7 +50,13 @@ const Quiz = () => {
      {
        questionIsActive &&
        (
-        <Question question={ currentQuestion } callback={ proceedQuiz }/>
+        <Question question={ quizStore.currentQuestion } callback={ proceedQuiz }/>
+       )
+     }
+     {
+       !questionIsActive &&
+       (
+        <QuestionResult value={ answerValue }/>
        )
      }
    </section>

@@ -1,29 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { withRouter } from 'react-router-dom';
+
+import { useStores } from "../stores/useStores";
 
 import { Jumbotron, Container, Button } from 'reactstrap';
 
-class Start extends React.Component{
+import QuizPreview from "./quiz/quizPreview";
 
-  startQuiz() {
-    let view = "quiz";
-    const { history } = this.props;
-    view && history.push( view );
+const Start = () => {
+
+  const { quizStore } = useStores();
+  const [quiz, setQuiz] = useState( null );
+
+  const getQuiz = async () => {
+
+    await quizStore.getRandomQuiz()
+     .then( response => {
+       setQuiz( response );
+     } )
   }
 
-  render() {
-    return (
-     <section>
-       <Jumbotron flex>
-         <Container flex>
-           <h1 className="display-3">Quiz</h1>
-           <p className="lead">Start quizzing today!</p>
-           <Button color="primary" onClick={ () => this.startQuiz() }>Begin</Button>
-         </Container>
-       </Jumbotron>
-     </section>
-    )
-  }
+  return (
+   <section>
+     {
+       quiz === null &&
+       (
+        <Jumbotron flex>
+          <Container flex>
+            <h1 className="display-1">Quiz</h1>
+            <p className="lead">Start quizzing today!</p>
+            <Button color="primary" onClick={ () => getQuiz() }>Begin</Button>
+          </Container>
+        </Jumbotron>
+       )
+     }
+     {
+       quiz !== null &&
+       (
+        <QuizPreview quiz={ quiz }/>
+       )
+     }
+   </section>
+  )
 }
 
 export default withRouter( Start )
